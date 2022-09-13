@@ -99,7 +99,9 @@ def play(word):
     guessed_letters = []                     # список уже названных букв
     guessed_words = []                       # список уже названных слов
     tries = 6                                # количество попыток
-    
+
+    print('Давайте играть в угадайку слов!')
+
     while guessed == False and tries != 0:
         guess = input('Угадывайте: ').upper()
         while is_valid(guess) != True:
