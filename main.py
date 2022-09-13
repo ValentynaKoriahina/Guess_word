@@ -152,5 +152,9 @@ def play(word):
         print(f'\nСлово было: {word}. Может повезет в следующий раз?')
         
 
-word, theme = get_word(word_list)
-play(word)
+start_game = '+'
+while start_game == '+':
+    word, theme = get_word(word_list)
+    play(word)
+    print('\nХотите сыграть еще раз?')
+    start_game = input('Введите + или -: ')
