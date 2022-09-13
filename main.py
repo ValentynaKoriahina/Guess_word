@@ -102,6 +102,14 @@ def play(word):
 
     print('Давайте играть в угадайку слов!')
 
+    tip = input('Нужна подсказка? + или -: ')
+    if tip == '+':
+        word_completion[0] = word[0]
+        word_completion[-1] = word[-1]
+
+    print(display_hangman(tries))
+    print(*word_completion)
+
     while guessed == False and tries != 0:
         guess = input('Угадывайте: ').upper()
         while is_valid(guess) != True:
@@ -127,8 +135,11 @@ def play(word):
                     guessed_words.append(guess)
                 print('Не верно :-(')
                 print(display_hangman(tries))
+                if tries == 3:
+                    extra_tip = input('Нужна еще подсказка? + или -: ')
+                    if extra_tip == '+':
+                        print('Загадано число')
                 print(*word_completion)
-
         else:
             print('Такая догадка уже была, попробуйте другую')
             
