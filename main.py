@@ -1,10 +1,13 @@
 import random
 
-word_list =['ONE', 'TWO']
-
+word_list = {'число':['ОДИН', 'ДВА', 'ТРИ', 'ЧЕТЫРЕ', 'ПЯТЬ'],
+            'день недели':['ПОНЕДЕЛЬНИК', 'ВТОРНИК', 'СРЕДА',
+            'ЧЕТВЕРГ', 'ПЯТНИЦА', 'СУББОТА', 'ВОСКРЕСЕНЬЕ']}
 
 def get_word(word_list):
-    return random.choice(word_list)
+    choice_theme = random.choice(list(word_list))
+    choice_word = random.choice(word_list[choice_theme])
+    return choice_word, choice_theme
 
     
 def display_hangman(tries):
@@ -138,7 +141,7 @@ def play(word):
                 if tries == 3:
                     extra_tip = input('Нужна еще подсказка? + или -: ')
                     if extra_tip == '+':
-                        print('Загадано число')
+                        print(f'Загадано: {theme}')
                 print(*word_completion)
         else:
             print('Такая догадка уже была, попробуйте другую')
@@ -149,10 +152,5 @@ def play(word):
         print(f'\nСлово было: {word}. Может повезет в следующий раз?')
         
 
-word = get_word(word_list)
-
+word, theme = get_word(word_list)
 play(word)
-
-
-
-
